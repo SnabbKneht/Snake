@@ -4,6 +4,7 @@
 #include <thread>
 #include <conio.h>
 #include "display_utils.h"
+#include "grid.h"
 
 using std::cout;
 
@@ -11,6 +12,8 @@ std::chrono::milliseconds game_engine::frame_duration = std::chrono::millisecond
 
 void game_engine::start()
 {
+    grid g(10, 10);
+    display_utils::draw_grid_with_border(g);
 }
 
 void game_engine::tick()
@@ -22,7 +25,5 @@ void game_engine::tick()
     //     if(key == 'c') display_utils::clear_console();
     // }
 
-    display_utils::clear_console();
-    auto window = display_utils::generate_window(100, 30);
-    display_utils::draw_window(window);
+
 }

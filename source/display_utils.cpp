@@ -1,27 +1,17 @@
 #include "display_utils.h"
 #include <iostream>
+#include "grid.h"
 
 using std::cout;
 using std::vector;
 using std::string;
 
-std::vector<std::string> display_utils::generate_window(int width, int height)
-{
-    vector<string> window;
-    window.push_back(string(width, '#'));
-    for(int row = 1; row < height - 1; ++row)
-    {
-        string line = '#' + string(width - 2, ' ') + '#';
-        window.push_back(line);
-    }
-    window.push_back(string(width, '#'));
-    return window;
-}
+char display_utils::border_symbol = '#';
 
-void display_utils::draw_window(std::vector<std::string> &window)
+void display_utils::draw_grid_with_border(grid &g)
 {
-    for(string &row : window)
-    {
-        cout << row << '\n';
-    }
+    cout << string(g.get_width() + 2, border_symbol) << '\n';
+    for(auto &row : g.get_contents())
+        cout << border_symbol << row << border_symbol << '\n';
+    cout << string(g.get_width() + 2, border_symbol) << '\n';
 }

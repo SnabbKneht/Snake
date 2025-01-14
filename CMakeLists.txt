@@ -7,4 +7,6 @@ add_executable(Snake source/main.cpp
         source/display_utils.cpp
         source/display_utils.h
         source/game_engine.cpp
-        source/game_engine.h)
+        source/game_engine.h
+        source/grid.cpp
+        source/grid.h)
