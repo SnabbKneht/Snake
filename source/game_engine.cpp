@@ -2,7 +2,7 @@
 #include <chrono>
 #include <thread>
 
-std::chrono::milliseconds game_engine::frame_duration = std::chrono::milliseconds(16);
+const std::chrono::milliseconds game_engine::frame_duration = std::chrono::milliseconds(32);
 
 std::vector<std::function<void ()>> game_engine::start_functions;
 std::vector<std::function<void ()>> game_engine::tick_functions;
