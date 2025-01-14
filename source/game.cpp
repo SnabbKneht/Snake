@@ -4,7 +4,6 @@
 
 game::game()
 {
-    game_engine::start_functions.push_back([this] { this->tick(); });
     game_engine::tick_functions.push_back([this] { this->tick(); });
 }
 

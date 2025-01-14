@@ -11,8 +11,6 @@ char snake::snake_symbol = 'O';
 snake::snake(grid &g, int x, int y) : g(g), pos_x(x), pos_y(y)
 {
     g.set(x, y, snake_symbol);
-
-    game_engine::start_functions.push_back([this] { this->move(); });
     game_engine::tick_functions.push_back([this] { this->move(); });
 }
 
