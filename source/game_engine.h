@@ -15,7 +15,7 @@ class game_engine
         static void run();
 
     private:
-        static std::chrono::milliseconds frame_duration;
+        static const std::chrono::milliseconds frame_duration;
         static void start();
         static void tick();
 };
