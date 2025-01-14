@@ -3,12 +3,15 @@
 
 #include <chrono>
 #include <vector>
+#include "game.h"
 
 class game_engine
 {
     public:
-        static std::vector<void (*) ()> start_functions;
-        static std::vector<void (*) ()> tick_functions;
+        // requires member functions of game class. For now, I don't know how to make it universal
+        static std::vector<void (game::*) ()> start_functions;
+        static std::vector<void (game::*) ()> tick_functions;
+
         static void run();
 
     private:
