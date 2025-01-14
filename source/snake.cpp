@@ -1,5 +1,7 @@
 #include "snake.h"
 #include <stdexcept>
+
+#include "game_engine.h"
 #include "grid.h"
 
 using std::out_of_range;
@@ -9,13 +11,16 @@ char snake::snake_symbol = 'O';
 snake::snake(grid &g, int x, int y) : g(g), pos_x(x), pos_y(y)
 {
     g.set(x, y, snake_symbol);
+
+    game_engine::start_functions.push_back([this] { this->move(); });
+    game_engine::tick_functions.push_back([this] { this->move(); });
 }
 
-void snake::move(direction dir)
+void snake::move()
 {
     try
     {
-        switch(dir)
+        switch(m_direction)
         {
             case direction::LEFT:
                 g.set(pos_x - 1, pos_y, snake_symbol);
@@ -34,7 +39,7 @@ void snake::move(direction dir)
     catch(out_of_range &err) { return; }
 
     g.set(pos_x, pos_y, ' ');
-    switch(dir)
+    switch(m_direction)
     {
         case direction::LEFT:
             --pos_x;
