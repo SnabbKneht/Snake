@@ -8,6 +8,7 @@ class grid
 {
     public:
         grid(int width, int height);
+
         void set(int x, int y, char c);
         std::vector<std::string> get_contents() const { return contents; }
         int get_width() const { return width; }
