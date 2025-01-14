@@ -11,7 +11,7 @@ class display_utils
 {
     public:
         static void clear_console() { system("cls"); }
-        static void draw_grid_with_border(grid &g);
+        static void draw_grid_with_border(const grid &g);
 
     private:
         static char border_symbol;
