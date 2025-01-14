@@ -1,16 +1,24 @@
-//
-// Created by kubak on 14.01.2025.
-//
-
 #ifndef SNAKE_H
 #define SNAKE_H
 
+class grid;
 
+class snake
+{
+    public:
+        snake(grid &g, int x, int y);
 
-class snake {
+        void move_left();
+        void move_right();
+        void move_up();
+        void move_down();
 
+    private:
+        grid &g;
+        int pos_x;
+        int pos_y;
+
+        static char snake_symbol;
 };
-
-
 
 #endif //SNAKE_H
