@@ -2,8 +2,6 @@
 #define DISPLAY_UTILS_H
 
 #include <process.h>
-#include <string>
-#include <vector>
 
 class grid;
 
@@ -14,7 +12,10 @@ class display_utils
         static void draw_grid_with_border(const grid &g);
 
     private:
-        static char border_symbol;
+        static constexpr char border_symbol = '#';
+        static constexpr char snake_symbol = 'O';
+        static constexpr char food_symbol = '*';
+        static constexpr char empty_symbol = ' ';
 };
 
 #endif //DISPLAY_UTILS_H

@@ -2,7 +2,7 @@
 #define GRID_H
 
 #include <vector>
-#include <string>
+#include "cell.h"
 #include "position.h"
 
 class grid
@@ -10,16 +10,16 @@ class grid
     public:
         grid(int width, int height);
 
-        void set(int x, int y, char c);
-        void set(position pos, char c);
-        std::vector<std::string> get_contents() const { return contents; }
+        void set(int x, int y, cell c);
+        void set(position pos, cell c);
+        std::vector<std::vector<cell>> get_contents() const { return contents; }
         int get_width() const { return width; }
         int get_height() const { return height; }
 
     private:
         int width = 0;
         int height = 0;
-        std::vector<std::string> contents;
+        std::vector<std::vector<cell>> contents;
 };
 
 #endif //GRID_H

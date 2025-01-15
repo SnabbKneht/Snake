@@ -7,15 +7,13 @@
 using std::out_of_range;
 using std::invalid_argument;
 
-char snake::snake_symbol = 'O';
-
 snake::snake(grid &g, position pos, int length) : m_grid(g)
 {
     if(length <= 0) throw invalid_argument("Cannot construct a snake with length 0 or less.");
 
     for(int i = 0; i < length; ++i)
     {
-        g.set(pos, snake_symbol);
+        g.set(pos, cell::SNAKE);
         body.push_back(pos);
         --pos.x;
     }
@@ -43,11 +41,11 @@ void snake::move()
     }
     try
     {
-        m_grid.set(next_head, snake_symbol);
+        m_grid.set(next_head, cell::SNAKE);
     }
     catch(out_of_range &err) { return; }
 
-    m_grid.set(body.back(), ' ');
+    m_grid.set(body.back(), cell::EMPTY);
     body.push_front(next_head);
     body.pop_back();
 }

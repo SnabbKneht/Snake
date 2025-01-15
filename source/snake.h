@@ -18,8 +18,6 @@ class snake
         grid &m_grid;
         std::deque<position> body;
         void move();
-
-        static char snake_symbol;
 };
 
 #endif //SNAKE_H
