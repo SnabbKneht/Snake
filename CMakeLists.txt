@@ -14,4 +14,5 @@ add_executable(Snake source/main.cpp
         source/snake.h
         source/game.cpp
         source/game.h
-        source/direction.h)
+        source/direction.h
+        source/position.h)
