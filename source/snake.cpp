@@ -1,6 +1,7 @@
 #include "snake.h"
 #include <stdexcept>
 
+#include "game.h"
 #include "game_engine.h"
 #include "grid.h"
 
@@ -41,9 +42,11 @@ void snake::move()
     }
     try
     {
+        if(m_grid.get(next_head) == cell::SNAKE)
+            game_engine::stop();
         m_grid.set(next_head, cell::SNAKE);
     }
-    catch(out_of_range &err) { return; }
+    catch(out_of_range &err) { game_engine::stop(); }
 
     m_grid.set(body.back(), cell::EMPTY);
     body.push_front(next_head);

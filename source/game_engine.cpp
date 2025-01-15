@@ -1,8 +1,7 @@
 #include "game_engine.h"
-#include <chrono>
 #include <thread>
 
-const std::chrono::milliseconds game_engine::frame_duration = std::chrono::milliseconds(32);
+bool game_engine::tick_enabled = true;
 
 std::vector<std::function<void ()>> game_engine::start_functions;
 std::vector<std::function<void ()>> game_engine::tick_functions;
@@ -11,11 +10,16 @@ void game_engine::run()
 {
     start();
 
-    while(true)
+    while(tick_enabled)
     {
         tick();
         std::this_thread::sleep_for(frame_duration);
     }
+}
+
+void game_engine::stop()
+{
+    tick_enabled = false;
 }
 
 void game_engine::start()

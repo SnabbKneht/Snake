@@ -4,18 +4,19 @@
 #include <chrono>
 #include <vector>
 #include <functional>
-#include "game.h"
 
 class game_engine
 {
     public:
+        static bool tick_enabled;
         static std::vector<std::function<void ()>> start_functions;
         static std::vector<std::function<void ()>> tick_functions;
 
         static void run();
+        static void stop();
 
     private:
-        static const std::chrono::milliseconds frame_duration;
+        static constexpr auto frame_duration = std::chrono::milliseconds(32);
         static void start();
         static void tick();
 };

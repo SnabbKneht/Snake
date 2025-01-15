@@ -1,10 +1,9 @@
-#include <conio.h>
 #include <iostream>
-#include <thread>
-
 #include "display_utils.h"
+#include "game.h"
 #include "game_engine.h"
 
+using std::cin;
 using std::cout;
 
 int main()
@@ -16,4 +15,9 @@ int main()
         display_utils::draw_grid(g.m_grid);
     });
     game_engine::run();
+
+    system("cls");
+    cout << "Game over!\n";
+    cout << "Press enter to exit.\n";
+    cin.get();
 }

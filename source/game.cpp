@@ -1,18 +1,21 @@
 #include "game.h"
 #include <conio.h>
 #include "game_engine.h"
+#include <iostream>
+
+using std::cin;
+using std::cout;
 
 game::game()
 {
-    game_engine::tick_functions.push_back([this] { this->tick(); });
+    game_engine::tick_functions.push_back([this] { this->handle_input(); });
 }
 
-void game::tick()
+void game::handle_input()
 {
     if(_kbhit())
     {
-        char key = _getch();
-        switch(key)
+        switch(_getch())
         {
             case 'a':
                 if(m_snake.m_direction == direction::RIGHT) break;

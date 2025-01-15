@@ -16,4 +16,6 @@ add_executable(Snake source/main.cpp
         source/game.h
         source/direction.h
         source/position.h
-        source/cell.h)
+        source/cell.h
+        source/food_spawner.cpp
+        source/food_spawner.h)
