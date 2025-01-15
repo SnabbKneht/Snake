@@ -12,6 +12,7 @@ class grid
 
         void set(int x, int y, cell c);
         void set(position pos, cell c);
+        cell get(position pos) const;
         std::vector<std::vector<cell>> get_contents() const { return contents; }
         int get_width() const { return width; }
         int get_height() const { return height; }

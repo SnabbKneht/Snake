@@ -21,3 +21,9 @@ void grid::set(position pos, cell c)
     if(pos.x < 0 || pos.x >= width || pos.y < 0 || pos.y >= height) throw out_of_range("Grid index out of range.");
     contents[pos.y][pos.x] = c;
 }
+
+cell grid::get(position pos) const
+{
+    if(pos.x < 0 || pos.x >= width || pos.y < 0 || pos.y >= height) throw out_of_range("Grid index out of range.");
+    return contents[pos.y][pos.x];
+}
