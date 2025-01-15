@@ -15,15 +15,19 @@ void game::tick()
         switch(key)
         {
             case 'a':
+                if(m_snake.m_direction == direction::RIGHT) break;
                 m_snake.m_direction = direction::LEFT;
                 break;
             case 'd':
+                if(m_snake.m_direction == direction::LEFT) break;
                 m_snake.m_direction = direction::RIGHT;
                 break;
             case 'w':
+                if(m_snake.m_direction == direction::DOWN) break;
                 m_snake.m_direction = direction::UP;
                 break;
             case 's':
+                if(m_snake.m_direction == direction::UP) break;
                 m_snake.m_direction = direction::DOWN;
                 break;
             default:
