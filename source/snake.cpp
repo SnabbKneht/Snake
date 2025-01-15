@@ -5,51 +5,49 @@
 #include "grid.h"
 
 using std::out_of_range;
+using std::invalid_argument;
 
 char snake::snake_symbol = 'O';
 
-snake::snake(grid &g, int x, int y) : g(g), pos_x(x), pos_y(y)
+snake::snake(grid &g, position pos, int length) : m_grid(g)
 {
-    g.set(x, y, snake_symbol);
+    if(length <= 0) throw invalid_argument("Cannot construct a snake with length 0 or less.");
+
+    for(int i = 0; i < length; ++i)
+    {
+        g.set(pos, snake_symbol);
+        body.push_back(pos);
+        --pos.x;
+    }
+
     game_engine::tick_functions.push_back([this] { this->move(); });
 }
 
 void snake::move()
 {
-    try
-    {
-        switch(m_direction)
-        {
-            case direction::LEFT:
-                g.set(pos_x - 1, pos_y, snake_symbol);
-                break;
-            case direction::RIGHT:
-                g.set(pos_x + 1, pos_y, snake_symbol);
-                break;
-            case direction::UP:
-                g.set(pos_x, pos_y - 1, snake_symbol);
-                break;
-            case direction::DOWN:
-                g.set(pos_x, pos_y + 1, snake_symbol);
-                break;
-        }
-    }
-    catch(out_of_range &err) { return; }
-
-    g.set(pos_x, pos_y, ' ');
+    position next_head = body.front();
     switch(m_direction)
     {
         case direction::LEFT:
-            --pos_x;
+            --next_head.x;
             break;
         case direction::RIGHT:
-            ++pos_x;
+            ++next_head.x;
             break;
         case direction::UP:
-            --pos_y;
+            --next_head.y;
             break;
         case direction::DOWN:
-            ++pos_y;
+            ++next_head.y;
             break;
     }
+    try
+    {
+        m_grid.set(next_head, snake_symbol);
+    }
+    catch(out_of_range &err) { return; }
+
+    m_grid.set(body.back(), ' ');
+    body.push_front(next_head);
+    body.pop_back();
 }

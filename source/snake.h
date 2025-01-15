@@ -1,21 +1,22 @@
 #ifndef SNAKE_H
 #define SNAKE_H
 
+#include <deque>
 #include "direction.h"
+#include "position.h"
 
 class grid;
 
 class snake
 {
     public:
-        snake(grid &g, int x, int y);
+        snake(grid &g, position pos, int length);
 
         direction m_direction = direction::RIGHT;
 
     private:
-        grid &g;
-        int pos_x;
-        int pos_y;
+        grid &m_grid;
+        std::deque<position> body;
         void move();
 
         static char snake_symbol;

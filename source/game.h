@@ -11,7 +11,7 @@ class game
         game();
 
         grid m_grid = grid(50, 20);
-        snake m_snake = snake(m_grid, position(5, 5), 3);
+        snake m_snake = snake(m_grid, position(15, 5), 10);
 
         void tick();
 };
