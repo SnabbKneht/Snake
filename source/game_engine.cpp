@@ -20,12 +20,12 @@ void game_engine::run()
 
 void game_engine::start()
 {
-    for(auto f : start_functions)
+    for(auto &f : start_functions)
         f();
 }
 
 void game_engine::tick()
 {
-    for(auto f : tick_functions)
+    for(auto &f : tick_functions)
         f();
 }
