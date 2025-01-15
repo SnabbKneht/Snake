@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include "position.h"
 
 class grid
 {
@@ -10,6 +11,7 @@ class grid
         grid(int width, int height);
 
         void set(int x, int y, char c);
+        void set(position pos, char c);
         std::vector<std::string> get_contents() const { return contents; }
         int get_width() const { return width; }
         int get_height() const { return height; }
