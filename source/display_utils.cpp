@@ -1,33 +1,42 @@
 #include "display_utils.h"
 #include <iostream>
+#include <sstream>
 #include "grid.h"
 
 using std::cout;
 using std::vector;
 using std::string;
+using std::ostringstream;
 
-void display_utils::draw_grid_with_border(const grid &g)
+void display_utils::draw_grid(const grid &g)
 {
-    cout << string(g.get_width() + 2, border_symbol) << '\n';
+    cout << grid_to_string(g);
+}
+
+std::string display_utils::grid_to_string(const grid &g)
+{
+    ostringstream oss;
+    oss << string(g.get_width() + 2, border_symbol) << '\n';
     for(auto &row : g.get_contents())
     {
-        cout << border_symbol;
+        oss << border_symbol;
         for(auto cell : row)
         {
             switch(cell)
             {
                 case cell::EMPTY:
-                    cout << empty_symbol;
+                    oss << empty_symbol;
                     break;
                 case cell::SNAKE:
-                    cout << snake_symbol;
+                    oss << snake_symbol;
                     break;
                 case cell::FOOD:
-                    cout << food_symbol;
+                    oss << food_symbol;
                     break;
             }
         }
-        cout << border_symbol << '\n';
+        oss << border_symbol << '\n';
     }
-    cout << string(g.get_width() + 2, border_symbol) << '\n';
+    oss << string(g.get_width() + 2, border_symbol) << '\n';
+    return oss.str();
 }
