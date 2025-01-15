@@ -1,7 +1,7 @@
 #ifndef DISPLAY_UTILS_H
 #define DISPLAY_UTILS_H
 
-#include <process.h>
+#include <iostream>
 #include <string>
 
 class grid;
@@ -9,7 +9,7 @@ class grid;
 class display_utils
 {
     public:
-        static void clear_console() { system("cls"); }
+        static void reset_console_cursor() { std::cout << "\033[H"; }
         static void draw_grid(const grid &g);
 
     private:
