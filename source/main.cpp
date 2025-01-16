@@ -8,6 +8,7 @@ using std::cout;
 
 int main()
 {
+    system("cls");
     cout << "Press enter to start.\n";
     cin.get();
 
