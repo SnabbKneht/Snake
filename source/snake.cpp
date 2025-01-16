@@ -1,6 +1,7 @@
 #include "snake.h"
 #include <stdexcept>
 
+#include "food_spawner.h"
 #include "game.h"
 #include "game_engine.h"
 #include "grid.h"
@@ -43,7 +44,13 @@ void snake::move()
     try
     {
         if(m_grid.get(next_head) == cell::SNAKE)
+        {
             game_engine::stop();
+        }
+        else if(m_grid.get(next_head) == cell::FOOD)
+        {
+            food_spawner::spawn_food_at_random_position(m_grid);
+        }
         m_grid.set(next_head, cell::SNAKE);
     }
     catch(out_of_range &err) { game_engine::stop(); }

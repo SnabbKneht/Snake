@@ -3,13 +3,9 @@
 
 class grid;
 
-class food_spawner
+struct food_spawner
 {
-    public:
-        explicit food_spawner(grid &g) : m_grid(g) {}
-
-    private:
-        grid &m_grid;
+    static void spawn_food_at_random_position(grid &g);
 };
 
 #endif //FOOD_SPAWNER_H

@@ -27,3 +27,17 @@ cell grid::get(position pos) const
     if(pos.x < 0 || pos.x >= width || pos.y < 0 || pos.y >= height) throw out_of_range("Grid index out of range.");
     return contents[pos.y][pos.x];
 }
+
+std::vector<position> grid::get_empty_cells_positions() const
+{
+    vector<position> result;
+    for(int y = 0; y < height; ++y)
+    {
+        for(int x = 0; x < width; ++x)
+        {
+            if(contents[y][x] == cell::EMPTY)
+                result.push_back(position(x, y));
+        }
+    }
+    return result;
+}

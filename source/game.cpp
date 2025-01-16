@@ -3,11 +3,14 @@
 #include "game_engine.h"
 #include <iostream>
 
+#include "food_spawner.h"
+
 using std::cin;
 using std::cout;
 
 game::game()
 {
+    food_spawner::spawn_food_at_random_position(m_grid);
     game_engine::tick_functions.push_back([this] { this->handle_input(); });
 }
 
