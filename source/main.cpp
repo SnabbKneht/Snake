@@ -28,4 +28,5 @@ int main()
     display_utils::print_score(g.get_snake_length());
     cout << "\nPress enter to exit.\n";
     cin.get();
+    system("cls");
 }
