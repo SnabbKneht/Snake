@@ -33,10 +33,10 @@ std::string display_utils::grid_to_string(const grid &g)
                     oss << empty_symbol;
                     break;
                 case cell::SNAKE:
-                    oss << snake_symbol;
+                    oss << "\033[33m" << snake_symbol << "\033[0m";
                     break;
                 case cell::FOOD:
-                    oss << food_symbol;
+                    oss << "\033[31m" << food_symbol << "\033[0m";
                     break;
             }
         }
