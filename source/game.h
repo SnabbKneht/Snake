@@ -14,8 +14,8 @@ class game
         const grid &get_grid() const { return m_grid; }
 
     private:
-        grid m_grid = grid(50, 20);
-        snake m_snake = snake(m_grid, position(15, 5), 3);
+        grid m_grid = grid(30, 30);
+        snake m_snake = snake(m_grid, position(5, 5), 3);
 
         void handle_input();
 };

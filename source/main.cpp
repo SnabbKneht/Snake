@@ -11,18 +11,21 @@ int main()
     cout << "Press enter to start.\n";
     cin.get();
 
+    system("cls");
+
     game g;
     game_engine::tick_functions.push_back([&g]
     {
         display_utils::reset_console_cursor();
         display_utils::draw_grid(g.get_grid());
+        cout << '\n';
         display_utils::print_score(g.get_snake_length());
     });
     game_engine::run();
 
     system("cls");
-    cout << "Game over!\n";
+    cout << "Game over!\n\n";
     display_utils::print_score(g.get_snake_length());
-    cout << "Press enter to exit.\n";
+    cout << "\nPress enter to exit.\n";
     cin.get();
 }
