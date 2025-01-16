@@ -8,6 +8,9 @@ using std::cout;
 
 int main()
 {
+    cout << "Press enter to start.\n";
+    cin.get();
+
     game g;
     game_engine::tick_functions.push_back([&g]
     {
