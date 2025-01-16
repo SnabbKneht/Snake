@@ -49,16 +49,16 @@ void snake::move()
         }
         else if(m_grid.get(next_head) == cell::FOOD)
         {
+            body.push_front(next_head);
             food_spawner::spawn_food_at_random_position(m_grid);
         }
         else
         {
+            body.push_front(next_head);
             m_grid.set(body.back(), cell::EMPTY);
             body.pop_back();
         }
         m_grid.set(next_head, cell::SNAKE);
     }
     catch(out_of_range &err) { game_engine::stop(); }
-
-    body.push_front(next_head);
 }

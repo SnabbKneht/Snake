@@ -13,6 +13,11 @@ void display_utils::draw_grid(const grid &g)
     cout << grid_to_string(g);
 }
 
+void display_utils::print_score(int score)
+{
+    cout << "Score: " << score << '\n';
+}
+
 std::string display_utils::grid_to_string(const grid &g)
 {
     ostringstream oss;

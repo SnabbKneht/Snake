@@ -11,6 +11,7 @@ class display_utils
     public:
         static void reset_console_cursor() { std::cout << "\033[H"; }
         static void draw_grid(const grid &g);
+        static void print_score(int score);
 
     private:
         static std::string grid_to_string(const grid &g);

@@ -13,6 +13,7 @@ class snake
         snake(grid &g, position pos, int length);
 
         direction m_direction = direction::RIGHT;
+        int get_length() const { return body.size(); }
 
     private:
         grid &m_grid;

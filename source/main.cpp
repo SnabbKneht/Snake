@@ -12,12 +12,14 @@ int main()
     game_engine::tick_functions.push_back([&g]
     {
         display_utils::reset_console_cursor();
-        display_utils::draw_grid(g.m_grid);
+        display_utils::draw_grid(g.get_grid());
+        display_utils::print_score(g.get_snake_length());
     });
     game_engine::run();
 
     system("cls");
     cout << "Game over!\n";
+    display_utils::print_score(g.get_snake_length());
     cout << "Press enter to exit.\n";
     cin.get();
 }
