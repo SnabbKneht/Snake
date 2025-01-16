@@ -16,7 +16,7 @@ class game_engine
         static void stop();
 
     private:
-        static constexpr auto frame_duration = std::chrono::milliseconds(100);
+        static constexpr auto frame_duration = std::chrono::milliseconds(64);
         static void start();
         static void tick();
 };

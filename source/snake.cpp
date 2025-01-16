@@ -51,11 +51,14 @@ void snake::move()
         {
             food_spawner::spawn_food_at_random_position(m_grid);
         }
+        else
+        {
+            m_grid.set(body.back(), cell::EMPTY);
+            body.pop_back();
+        }
         m_grid.set(next_head, cell::SNAKE);
     }
     catch(out_of_range &err) { game_engine::stop(); }
 
-    m_grid.set(body.back(), cell::EMPTY);
     body.push_front(next_head);
-    body.pop_back();
 }
