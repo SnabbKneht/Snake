@@ -24,4 +24,6 @@ add_executable(Snake source/main.cpp
         source/food_spawner.h
         source/my_random.cpp
         source/my_random.h
-        source/score_entry.h)
+        source/score_entry.h
+        source/high_scores.cpp
+        source/high_scores.h)

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <sstream>
 #include "grid.h"
+#include "high_scores.h"
+#include "score_entry.h"
 
 using std::cout;
 using std::vector;
@@ -16,6 +18,14 @@ void display_utils::draw_grid(const grid &g)
 void display_utils::print_score(int score)
 {
     cout << "Score: " << score << '\n';
+}
+
+void display_utils::print_high_scores()
+{
+    for(auto &entry : high_scores::get_entries())
+    {
+        cout << entry.player_name << ' ' << entry.score << '\n';
+    }
 }
 
 std::string display_utils::grid_to_string(const grid &g)

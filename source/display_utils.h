@@ -12,6 +12,7 @@ class display_utils
         static void reset_console_cursor() { std::cout << "\033[H"; }
         static void draw_grid(const grid &g);
         static void print_score(int score);
+        static void print_high_scores();
 
     private:
         static std::string grid_to_string(const grid &g);
