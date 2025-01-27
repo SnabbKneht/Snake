@@ -2,6 +2,7 @@
 #include "score_entry.h"
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 using std::ifstream;
 using std::ofstream;
@@ -13,14 +14,12 @@ std::vector<score_entry> high_scores::entries;
 
 void high_scores::save_score_if_high(score_entry entry)
 {
-    if(entries.size() < max_scores)
+    if(entries.size() < max_scores || entry.score > entries.back().score)
     {
-        push_at_proper_index(entry);
-    }
-    else if(entry.score > entries.back().score)
-    {
-        push_at_proper_index(entry);
-        entries.pop_back();
+        entries.push_back(entry);
+        sort_scores();
+        if(entries.size() > max_scores)
+            entries.pop_back();
     }
 }
 
@@ -50,18 +49,10 @@ void high_scores::save_file()
     out.close();
 }
 
-void high_scores::push_at_proper_index(score_entry new_entry)
+void high_scores::sort_scores()
 {
-    score_entry temp;
-    for(int i = 0; i < entries.size(); ++i)
+    std::ranges::sort(entries, [](const score_entry &a, const score_entry &b)
     {
-        if(entries[i].score >= new_entry.score) continue;
-        entries.push_back(entries.back());
-        for(int j = entries.size() - 2; j > i; --j)
-        {
-            entries[j] = entries[j - 1];
-        }
-        entries[i] = new_entry;
-        break;
-    }
+        return a.score > b.score;
+    });
 }

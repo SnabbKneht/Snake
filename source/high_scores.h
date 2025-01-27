@@ -18,7 +18,7 @@ class high_scores
         static constexpr std::string file_path = "high_scores.txt";
         static constexpr int max_scores = 10;
         static std::vector<score_entry> entries;
-        static void push_at_proper_index(score_entry);
+        static void sort_scores();
 };
 
 #endif //HIGH_SCORES_H

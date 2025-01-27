@@ -22,9 +22,10 @@ void display_utils::print_score(int score)
 
 void display_utils::print_high_scores()
 {
+    cout << "\nHIGH SCORES:\n";
     for(auto &entry : high_scores::get_entries())
     {
-        cout << entry.player_name << ' ' << entry.score << '\n';
+        cout << '\t' << entry.player_name << ' ' << entry.score << '\n';
     }
 }
 
